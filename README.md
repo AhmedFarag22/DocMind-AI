@@ -213,14 +213,6 @@ The system retrieves the relevant sections from the uploaded document and genera
 
 Add screenshots of the application here:
 
-```text
-docs/
-└── screenshots/
-    ├── home.png
-    ├── uploaded-document.png
-    └── answer.png
-```
-
 Example:
 <img src="assets/screenshot.png" width="800" height="450">
 
