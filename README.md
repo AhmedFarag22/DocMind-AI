@@ -222,15 +222,13 @@ docs/
 ```
 
 Example:
-
-```markdown
-
 <img src="assets/screenshot.png" width="800" height="450">
+
 
 https://github.com/user-attachments/assets/5ff714d3-e256-42ca-b743-116b552bf9ab
 
 
-```
+
 
 ---
 
