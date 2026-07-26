@@ -225,7 +225,7 @@ Example:
 
 ```markdown
 
-<img width="1600" height="782" alt="WhatsApp Image 2026-07-26 at 10 10 11 PM" src="https://github.com/user-attachments/assets/38afa69c-eb6d-40d5-8b04-37421adf845a" />
+<img src="assets/screenshot.png" width="800" height="450">
 
 https://github.com/user-attachments/assets/5ff714d3-e256-42ca-b743-116b552bf9ab
 
