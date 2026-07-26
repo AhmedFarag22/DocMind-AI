@@ -1,133 +1,205 @@
-# 🚀 [Tips Hindawi](https://www.tipshindawi.com/) Challenge (June–July) 2026
+# 🚀 DocMind AI — AI Document Intelligence System
 
-> 🏆 This repository is my official submission for the [**Tips Hindawi**](https://www.tipshindawi.com/) **Challenge (June–July) 2026**.
+> 🏆 Official submission for the [**Tips Hindawi Challenge**](https://www.tipshindawi.com/) — June–July 2026.
 
 ## 👤 Participant
 
-| Field                | Value                                            |
-| -------------------- | ------------------------------------------------ |
-| **Full Name**        | Ahmed Farag                                      |
-| **Project Name**     | DocMind AI                                       |
-| **GitHub Username**  | [@AhmedFarag22](https://github.com/AhmedFarag22) |
-| **Challenge Batch**  | June–July 2026                                   |
-| **Training Program** | Large Language Models (LLMs) Program             |
-| **Organization**     | [**Edrak for AI**](https://edrak4ai.com/en)      |
+| Field                | Value                                       |
+| -------------------- | ------------------------------------------- |
+| **Full Name**        | Ahmed Farag                                 |
+| **Project Name**     | AI Document Intelligence System                                  |
+| **GitHub Username**  | AhmedFarag22                                |
+| **Challenge Batch**  | June–July 2026                              |
+| **Training Program** | Large Language Models (LLMs) Program        |
+| **Organization**     | [**Edrak for AI**](https://edrak4ai.com/en) |
 
 ---
 
 # 📖 Project Overview
 
-**DocMind AI** is an intelligent document question-answering system built using **Retrieval-Augmented Generation (RAG)**.
+**DocMind AI** is an AI-powered document intelligence system that allows users to upload PDF documents and interact with them using multiple intelligent analysis operations.
 
-The system allows users to upload a PDF document and ask natural-language questions about its content. Instead of sending the entire document directly to the language model, DocMind AI retrieves the most relevant sections from the uploaded document and uses them as context to generate a focused answer.
+The system combines **Retrieval-Augmented Generation (RAG)**, semantic search, vector embeddings, and Large Language Models to understand and analyze document content.
 
-The complete pipeline is:
+Instead of manually searching through long documents, users can upload a PDF and perform tasks such as:
 
-```text
-PDF Document
-     ↓
-Text Extraction
-     ↓
-Text Chunking
-     ↓
-Sentence Embeddings
-     ↓
-FAISS Vector Search
-     ↓
-Relevant Context Retrieval
-     ↓
-FLAN-T5
-     ↓
-Answer + Source Pages
-```
+* Asking questions about the document.
+* Generating concise summaries.
+* Extracting important key points.
+* Identifying potential risks.
+* Comparing two documents and detecting important changes.
 
-This approach helps the system answer questions based on the actual content of the uploaded document.
+The goal of DocMind AI is to transform static PDF documents into interactive and intelligent sources of information.
 
 ---
 
 # ✨ Features
 
-* 📄 Upload PDF documents directly through the web interface.
-* 🔍 Extract text from PDF pages using PyMuPDF.
-* ✂️ Split long documents into smaller overlapping text chunks.
-* 🧠 Generate semantic embeddings using Sentence Transformers.
-* ⚡ Perform fast similarity search using FAISS.
-* 🤖 Generate answers using Google's FLAN-T5 model.
-* 📚 Retrieve relevant document sections before generating an answer.
-* 📖 Display source pages used to answer the question.
-* 🖥️ Simple and interactive Streamlit interface.
-* 🔒 Designed to answer questions based on the uploaded document context.
+## 💬 Question Answering
+
+Ask questions about an uploaded PDF document.
+
+The system:
+
+1. Extracts the document text.
+2. Splits the text into smaller chunks.
+3. Converts the chunks into vector embeddings.
+4. Retrieves the most relevant chunks using semantic similarity.
+5. Uses an LLM to generate an answer based only on the retrieved context.
+
+The generated answer includes:
+
+* Answer
+* Confidence level
+* Source page references
+* Relevant document excerpts
+
+---
+
+## 📝 Document Summarization
+
+Generate a concise summary of a complete PDF document.
+
+The system performs hierarchical summarization by:
+
+* Summarizing individual document chunks.
+* Combining the generated summaries.
+* Creating a final concise summary containing the most important information.
+
+---
+
+## 🔑 Key Points Extraction
+
+Automatically extract important structured information from documents.
+
+The current implementation can identify important sections such as:
+
+* Payment Terms
+* Late Payment
+* Contract Duration
+* Termination
+* Data Protection
+* Governing Law
+
+---
+
+## ⚠️ Risk Analysis
+
+Analyze documents for potential contractual risks.
+
+The system can identify risks related to:
+
+* Late Payment Penalties
+* Confidentiality and Data Protection
+* Contract Termination
+* Financial Impact
+* Extended Contractual Commitments
+
+Each detected risk includes:
+
+* Risk title
+* Explanation
+* Severity level
+
+---
+
+## 📊 Document Comparison
+
+Compare two PDF documents and detect changes between them.
+
+The comparison system identifies:
+
+* Similar sections
+* Different sections
+* Added or removed sections
+* Important numerical changes
+* Potential risks caused by document modifications
+
+It can detect changes such as:
+
+* Payment period changes
+* Late payment penalty changes
+* Contract duration changes
+* Termination notice changes
+
+---
+
+# 🧠 RAG Architecture
+
+DocMind AI uses a Retrieval-Augmented Generation pipeline:
+
+```text
+        PDF Document
+             │
+             ▼
+      Text Extraction
+             │
+             ▼
+        Text Chunking
+             │
+             ▼
+    Sentence Embeddings
+             │
+             ▼
+       FAISS Vector Index
+             │
+             ▼
+       Semantic Retrieval
+             │
+             ▼
+     Relevant Document Context
+             │
+             ▼
+           LLM
+             │
+             ▼
+        AI-Generated Answer
+```
+
+For Question Answering, the system retrieves only the most relevant document chunks before sending the context to the language model.
+
+This helps the model generate answers based on the uploaded document instead of relying only on general knowledge.
 
 ---
 
 # 🛠️ Technologies Used
 
+### Programming Language
+
 * **Python**
-* **Streamlit** — Web application interface
-* **PyMuPDF** — PDF text extraction
-* **LangChain Text Splitters** — Document chunking
-* **Sentence Transformers** — Semantic embeddings
-* **FAISS** — Vector similarity search
-* **Hugging Face Transformers** — Model inference
-* **FLAN-T5 Base** — Text-to-text generation model
-* **NumPy** — Numerical operations
-* **Git & GitHub** — Version control and project hosting
 
----
+### User Interface
 
-# 🧠 How the RAG Pipeline Works
+* **Streamlit**
 
-## 1. Document Processing
+### Document Processing
 
-The user uploads a PDF document through the Streamlit interface.
+* **PyMuPDF (fitz)**
 
-The system extracts text from each page while preserving the page number as metadata.
+### Text Splitting
 
-## 2. Text Chunking
+* **LangChain Text Splitters**
+* **RecursiveCharacterTextSplitter**
 
-Long document text is split into smaller overlapping chunks.
+### Embeddings
 
-This improves retrieval quality and allows the system to work with long documents more effectively.
+* **Sentence Transformers**
+* **all-MiniLM-L6-v2**
 
-## 3. Embedding Generation
+### Vector Search
 
-Each text chunk is converted into a numerical vector using:
+* **FAISS**
 
-```text
-all-MiniLM-L6-v2
-```
+### Large Language Model
 
-These vectors represent the semantic meaning of the text.
+* **Hugging Face Transformers**
+* **FLAN-T5 Base**
 
-## 4. Vector Search
+### Data Processing
 
-The generated embeddings are stored in a FAISS index.
-
-When the user asks a question:
-
-```text
-Question
-   ↓
-Question Embedding
-   ↓
-FAISS Similarity Search
-   ↓
-Top Relevant Chunks
-```
-
-## 5. Answer Generation
-
-The retrieved chunks are combined into a context and passed to:
-
-```text
-google/flan-t5-base
-```
-
-The model generates an answer based on the retrieved document context.
-
-## 6. Source Display
-
-The system also displays the page numbers of the retrieved document sections used during the answer-generation process.
+* **NumPy**
+* **Regular Expressions**
+* **JSON**
 
 ---
 
@@ -138,8 +210,6 @@ The system also displays the page numbers of the retrieved document sections use
 ```bash
 git clone https://github.com/AhmedFarag22/DocMind-AI.git
 ```
-
-Navigate to the project directory:
 
 ```bash
 cd DocMind-AI
@@ -155,7 +225,7 @@ cd DocMind-AI
 python -m venv venv
 ```
 
-Activate the environment:
+Activate the virtual environment:
 
 ```bash
 venv\Scripts\activate
@@ -177,7 +247,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The application will be available locally at:
+The application will open in your browser at:
 
 ```text
 http://localhost:8501
@@ -187,87 +257,100 @@ http://localhost:8501
 
 # 🚀 Usage
 
-1. Run the Streamlit application.
-2. Upload a PDF document.
-3. Wait for the document to be processed.
-4. Enter a question related to the document.
-5. Submit the question.
-6. View the generated answer.
-7. Review the relevant source pages.
+## Single Document Analysis
 
-Example:
+1. Run the application.
+2. Select an operation from the sidebar.
+3. Upload a PDF document.
+4. Select the desired operation:
 
-```text
-Question:
-Who is Elizabeth Bennet?
+   * Question Answering
+   * Summarization
+   * Key Points
+   * Risk Analysis
+5. View the generated results and document sources.
 
-Answer:
-The system retrieves the relevant sections from the uploaded document and generates an answer based on the retrieved context.
-```
+---
+
+## Document Comparison
+
+1. Select **Document Comparison** from the sidebar.
+2. Upload **Document A**.
+3. Upload **Document B**.
+4. Click **Compare Documents**.
+5. Review:
+
+   * Similarities
+   * Differences
+   * Important Changes
+   * Potential Risks
 
 ---
 
 # 📸 Demo
 
-### Application Interface
+## Application Interface
 
-Add screenshots of the application here:
+<img src="assets/2Capture.PNG" width="800" height="450">
 
-Example:
-<img src="assets/screenshot.png" width="800" height="450">
+---
 
+## 🎥 Demo Video
 
-https://github.com/user-attachments/assets/5ff714d3-e256-42ca-b743-116b552bf9ab
+https://github.com/user-attachments/assets/dd072849-e446-4d2d-8db2-55312f18c9f7
 
-
-
+> The demo video demonstrates the main features of the system, including PDF upload, document analysis, question answering, summarization, risk analysis, and document comparison.
 
 ---
 
 # 📈 Results
 
-DocMind AI successfully demonstrates a complete end-to-end Retrieval-Augmented Generation pipeline:
+DocMind AI successfully provides a unified AI-powered workflow for analyzing PDF documents.
 
-* ✅ PDF document ingestion.
-* ✅ Text extraction from uploaded documents.
-* ✅ Semantic text chunking.
-* ✅ Embedding generation.
-* ✅ FAISS vector indexing.
-* ✅ Similarity-based context retrieval.
-* ✅ Question answering using FLAN-T5.
-* ✅ Source page retrieval.
-* ✅ Interactive Streamlit user interface.
-* ✅ Local deployment and testing.
+The project demonstrates the practical application of:
 
-The project was successfully developed and tested locally after being initially prototyped and tested in a Kaggle environment.
+* Retrieval-Augmented Generation (RAG)
+* Semantic Search
+* Vector Embeddings
+* Large Language Models
+* Natural Language Processing
+* Document Intelligence
+
+The system can transform unstructured PDF content into useful and actionable insights through multiple AI-powered operations.
 
 ---
 
 # 🔮 Future Improvements
 
-* 💬 Add conversational memory for multi-turn conversations.
-* 📚 Support multiple PDF documents at the same time.
-* 🗂️ Add document management and history.
-* ⚡ Improve retrieval using hybrid search combining keyword and semantic search.
-* 🎯 Add reranking models to improve retrieved context quality.
-* 🧠 Experiment with larger and more powerful language models.
-* 🌍 Add multilingual document question answering.
-* ☁️ Deploy the application to a cloud platform.
-* 🔐 Add user authentication and private document storage.
-* 📊 Add document analytics and retrieval evaluation metrics.
+Future versions of DocMind AI may include:
+
+* Support for additional document formats such as DOCX and TXT.
+* Improved multilingual document support.
+* OCR support for scanned documents.
+* More advanced risk detection using LLM-based reasoning.
+* Improved document comparison using semantic similarity.
+* Persistent vector databases for large document collections.
+* Conversation memory for multi-turn document conversations.
+* Support for larger and more powerful language models.
+* Exporting analysis results as PDF or DOCX reports.
+* User authentication and document management.
 
 ---
 
 # 📚 About the Challenge
 
-This project was developed as part of the [**Tips Hindawi**](https://www.tipshindawi.com/) **Challenge (June–July 2026)**.
+This project was developed as part of the [**Tips Hindawi Challenge**](https://www.tipshindawi.com/) — June–July 2026.
 
-[Tips Hindawi](https://www.tipshindawi.com/) is the internships department of [**Edrak for AI**](https://edrak4ai.com/en), and the challenge encourages participants to build real-world projects, apply practical skills, and showcase their work through GitHub.
+The challenge provides participants with the opportunity to apply their technical knowledge to real-world projects and build practical solutions using modern technologies.
 
-For more information about the challenge, training programs, and upcoming batches, visit the official [Tips Hindawi](https://www.tipshindawi.com/) website.
+The project was developed as part of the **Large Language Models (LLMs) Program** at [**Edrak for AI**](https://edrak4ai.com/en).
+
+For more information about the challenge, training programs, and upcoming opportunities, visit the official [**Tips Hindawi**](https://www.tipshindawi.com/) website.
 
 ---
 
 # 📄 License
 
-This project is shared for educational and portfolio purposes.
+This project is developed for educational, training, and portfolio purposes as part of the Tips Hindawi Challenge.
+
+© 2026 Ahmed Farag. All rights reserved.
